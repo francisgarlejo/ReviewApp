@@ -1,0 +1,320 @@
+<!-- 
+    index.html
+    FGReviewA2
+
+    Revision History
+        Francis Gerald H. Garlejo
+        2022.11.10: Created,
+        2022.12.10: Revised,
+        2022.13.10: Revised,
+        2022.15.10: Finalized
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FG Review A2</title>
+    <!-- jquery-->
+    <script src="js/lib/jquery-2.1.4.js" type="text/javascript"></script>
+    <!-- jquery mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js" type="text/javascript"></script>
+    <!-- jquery validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!-- jquery mobile styles-->
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css" type="text/css">
+
+    <!--Defined js-->
+    <script src="js/lib/FGDAL.js" type="text/javascript"></script>
+    <script src="js/lib/FGDatabase.js" type="text/javascript"></script>
+    <script src="js/lib/FGfacade.js" type="text/javascript"></script>
+    <script src="js/lib/FGglobal.js" type="text/javascript"></script>
+    <script src="js/lib/FGutil.js" type="text/javascript"></script>
+
+    <!-- Defined CSS-->
+    <link rel="stylesheet" href="css/lib/FGmystyle.css" type="text/css">
+
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Tangerine&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Home Page -->
+    <div data-role="page" id="FGHomePage">
+        <header data-role="header" data-position="fixed" data-theme="a">
+            <h1>FG Review A2</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#FGHomePage" data-icon="home"
+                            class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href="#FGAddReviewPage" data-icon="plus">Add</a></li>
+                    <li><a href="#FGViewReviewPage" data-icon="grid">Reviews</a>
+                    </li>
+                    <li><a href="#FGSettingsPage"
+                            data-icon="gear">Settings</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section data-role="content">
+            <h1>Francis Garlejo's Review A2 App</h1>
+            <p>Welcome to the Francis Garlejo's Review A2 App.
+                A prototype designed for mobile programming class.
+                This is the first iteration of the app to keep track of
+                different places you visited along with your reviews.
+            </p>
+            <img src="img/man-icon.png" alt="FG-image" class="imgCenter">
+            <p>Please feel free to contact me if you have any suggestions!
+            </p>
+            <a href="#" data-role="button" data-icon="plus" class="anchorNumber">Call: 519.748.25.26</a>
+            <a href="#" data-role="button" data-icon="plus" class="anchorEmail">Email: fgarlejo9535@conestogac.on.ca</a>
+            <a href="#" data-role="button" data-icon="plus" class="anchorWeb">Web: www.conestogac.on.ca</a>
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="a">
+            <h1>&copy Francis Garlejo</h1>
+        </footer>
+    </div>
+
+    <!-- Add Review Page -->
+    <div data-role="page" id="FGAddReviewPage">
+        <header data-role="header" data-position="fixed" data-theme="a">
+            <h1>Add a Review</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#FGHomePage" data-icon="home">Home</a></li>
+                    <li><a href="#FGAddReviewPage" data-icon="plus"
+                            class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#FGViewReviewPage" data-icon="grid">Reviews</a>
+                    </li>
+                    <li><a href="#FGSettingsPage"
+                            data-icon="gear">Settings</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section data-role="content">
+            <form id="frmAdd" name="frmAdd">
+                <div>
+                    <label for="nameAdd">Restaurant Name:</label>
+                    <input type="text" name="nameAdd" id="nameAdd">
+                </div>
+                <div>
+                    <label for="businessAdd">Business Id:</label>
+                    <input type="text" name="businessAdd" id="businessAdd">
+                </div>
+                <div>
+                    <label for="stateAdd">Choose State:</label>
+                    <select id="stateAdd" name="stateAdd" data-native-menu="false">
+                        <option value="AL" selected>Alberta</option>
+                        <option value="BC">British Columbia</option>
+                        <option value="MB">Manitoba</option>
+                        <option value="ON">Ontario</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="emailAdd">Reviewer Email:</label>
+                    <input type="text" name="emailAdd" id="emailAdd">
+                </div>
+                <div>
+                    <label for="commentsAdd">Reviewer Comments:</label>
+                    <textarea name="commentsAdd" id="commentsAdd"></textarea>
+                </div>
+                <div>
+                    <label for="chkRating">Do you want to add your ratings?</label>
+                    <input type="checkbox" id="chkRating" name="chkRating" data-iconpos="left">
+                    <div id="ratingDiv">
+                        <label for="foodQualityRating">Food Quality (0-5):</label>
+                        <input type="number" id="foodQualityRating" name="foodQualityRating">
+                        <label for="serviceRating">Service (0-5):</label>
+                        <input type="number" id="serviceRating" name="serviceRating">
+                        <label for="valueRating">Value (0-5):</label>
+                        <input type="number" id="valueRating" name="valueRating">
+                        <label for="overallRating">Overall Ratings (1-100):</label>
+                        <input type="text" id="overallRating" name="overallRating">
+                    </div>
+                </div>
+                <div>
+                    <button type="button" data-role="button" id="btnSaveAdd" name="btnSaveAdd"
+                        class="ui-btn-active">Save</button>
+                </div>
+            </form>
+
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="a">
+            <h1>&copy Francis Garlejo</h1>
+        </footer>
+    </div>
+
+    <!-- View Review Page -->
+    <div data-role="page" id="FGViewReviewPage">
+        <header data-role="header" data-position="fixed" data-theme="a">
+            <h1>List of Reviews</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#FGHomePage" data-icon="home">Home</a></li>
+                    <li><a href="#FGAddReviewPage" data-icon="plus">Add</a></li>
+                    <li><a href="#FGViewReviewPage" data-icon="grid"
+                            class="ui-btn-active ui-state-persist">Reviews</a>
+                    </li>
+                    <li><a href="#FGSettingsPage"
+                            data-icon="gear">Settings</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section data-role="content">
+            <ul data-role="listview" class="ui-listview-inset" data-split-icon="gear">
+                <li>
+                    <a href="#">
+                        <h2>Restaurant Name: Grumpy Joe</h2>
+                        <p>Business Id: BN001</p>
+                        <p>State: Ontario</p>
+                        <p>Reviewer Email: grumpyjoe@gmail.com</p>
+                        <p>Comments: The food looks amazing and delicious!</p>
+                        <p>Overall Rating: 90%</p>
+                        <a href="#FGModifyReviewPage" data-transition="slide"></a>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>Restaurant Name: Good Taste</h2>
+                        <p>Business Id: BN002</p>
+                        <p>State: British Columbia</p>
+                        <p>Reviewer Email: gtrestaurant@gmail.com</p>
+                        <p>Comments: Good Food and Dessert!</p>
+                        <p>Overall Rating: 80%</p>
+                        <a href="#FGModifyReviewPage" data-transition="slide"></a>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>Restaurant Name: Hill Station</h2>
+                        <p>Business Id: BN003</p>
+                        <p>State: Alberta</p>
+                        <p>Reviewer Email: hillstation@gmail.com</p>
+                        <p>Comments: Very nice ambience!</p>
+                        <p>Overall Rating: 95%</p>
+                        <a href="#FGModifyReviewPage" data-transition="slide"></a>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="a">
+            <h1>&copy Francis Garlejo</h1>
+        </footer>
+    </div>
+
+    <!-- Modify Review Page -->
+    <div data-role="page" id="FGModifyReviewPage">
+        <header data-role="header" data-position="fixed" data-theme="a">
+            <h1>Modify Reviews</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#FGHomePage" data-icon="home">Home</a></li>
+                    <li><a href="#FGAddReviewPage" data-icon="plus">Add</a></li>
+                    <li><a href="#FGViewReviewPage" data-icon="grid"
+                            class="ui-btn-active ui-state-persist">Reviews</a>
+                    </li>
+                    <li><a href="#FGSettingsPage"
+                            data-icon="gear">Settings</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section data-role="content">
+            <form id="frmModifyReview" name="frmModifyReview">
+                <div>
+                    <label for="nameMod">Restaurant Name:</label>
+                    <input type="text" name="nameMod" id="nameMod">
+                </div>
+                <div>
+                    <label for="businessMod">Business Id:</label>
+                    <input type="text" name="businessMod" id="businessMod">
+                </div>
+                <div>
+                    <label for="stateMod">Choose State:</label>
+                    <select id="stateMod" name="stateMod" data-native-menu="false">
+                        <option value="AL" selected>Alberta</option>
+                        <option value="BC">British Columbia</option>
+                        <option value="MB">Manitoba</option>
+                        <option value="ON">Ontario</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="emailMod">Reviewer Email:</label>
+                    <input type="text" name="emailMod" id="emailMod">
+                </div>
+                <div>
+                    <label for="commentsMod">Reviewer Comments:</label>
+                    <textarea name="commentsMod" id="commentsMod"></textarea>
+                </div>
+                <div>
+                    <label for="chkRatingMod">Do you want to add your ratings?</label>
+                    <input type="checkbox" id="chkRatingMod" name="chkRatingMod" data-iconpos="left">
+                    <div id="ratingDivMod">
+                        <label for="foodQualityRatingMod">Food Quality (0-5):</label>
+                        <input type="number" id="foodQualityRatingMod" name="foodQualityRatingMod">
+                        <label for="serviceRatingMod">Service (0-5):</label>
+                        <input type="number" id="serviceRatingMod" name="serviceRatingMod">
+                        <label for="valueRatingMod">Value (0-5):</label>
+                        <input type="number" id="valueRatingMod" name="valueRatingMod">
+                        <label for="sldOverallRatingMod">Overall Ratings (1-100):</label>
+                        <input type="range" id="sldOverallRatingMod" name="sldOverallRatingMod" data-highlight="true" value="0" min="0" max="100">
+                    </div>
+                </div>
+                <div>
+                    <button type="button" data-role="button" id="btnCancelMod" name="btnCancelMod" data-theme="a"
+                        data-inline="true">Cancel</button>
+                    <button type="button" data-role="button" id="btnDeleteMod" name="btnDeleteMod" data-theme="b"
+                        data-inline="true">Delete</button>
+                    <button type="button" data-role="button" id="btnUpdateMod" name="btnUpdateMod" class="ui-btn-active"
+                        data-inline="true">Update</button>
+                </div>
+            </form>
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="a">
+            <h1>&copy Francis Garlejo</h1>
+        </footer>
+    </div>
+
+    <!-- Settings Page -->
+    <div data-role="page" id="FGSettingsPage">
+        <header data-role="header" data-position="fixed" data-theme="a">
+            <h1>Settings</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#FGHomePage" data-icon="home">Home</a></li>
+                    <li><a href="#FGAddReviewPage" data-icon="plus">Add</a></li>
+                    <li><a href="#FGViewReviewPage" data-icon="grid">Reviews</a></li>
+                    <li><a href="#FGSettingsPage" data-icon="gear">Settings</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section data-role="content">
+            <div>
+                <label for="defaultEmail">Default Reviewer Email:</label>
+                <input type="text" name="defaultEmail" id="defaultEmail">
+            </div>
+            <div>
+                <button type="button" data-role="button" id="btnSaveSet" name="btnSaveSet" class="ui-btn-active">Save</button>
+            </div>
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="a">
+            <h1>&copy Francis Garlejo</h1>
+        </footer>
+    </div>
+
+</body>
+
+</html>

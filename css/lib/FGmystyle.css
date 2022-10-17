@@ -1,0 +1,66 @@
+/*
+    FGmystyle.css
+    FGReviewA1
+
+    Revision History
+        Francis Gerald H. Garlejo
+        2022.11.10: Created,
+        2022.12.10: Revised,
+        2022.13.10: Revised,
+        2022.15.10: Finalized
+*/
+
+.imgCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.anchorNumber {
+    text-align: left;
+}
+
+.anchorEmail {
+    text-align: left;
+}
+
+.anchorWeb {
+    text-align: left;
+}
+
+#btnCancelMod {
+    margin: 5px -3px -3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#btnUpdateMod {
+    margin: 5px -3px -3px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#btnDeleteMod {
+    margin: 5px -3px -3px;
+    border-radius: 0px;
+}
+
+#ratingDiv {
+    display: none;
+}
+
+#ratingDivMod {
+    display: none;
+}
+
+label.error{
+    color: #F00;
+    font-weight: bold;
+}
+
+input.error,
+select.error,
+textarea.error {
+    border: 1px red solid;
+}
